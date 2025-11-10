@@ -1,6 +1,6 @@
 package domain.enums;
 
-public enum PaymentType {
+public enum PaymentMethod {
     CREDIT_CARD,
     DEBIT_CARD,
     CASH,
