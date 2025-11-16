@@ -1,7 +1,7 @@
 package application;
 
 import application.usecases.CreateClient;
-
+import infrastructure.MemoryClientRepository;
 
 
 import java.util.Locale;
@@ -11,7 +11,8 @@ public class CarrentalApplication {
     public static void main(String[] args) {
         Locale.setDefault(Locale.US);
         Scanner sc = new Scanner(System.in);
-        CreateClient createClient = new CreateClient();
+        MemoryClientRepository memoryClientRepository = new MemoryClientRepository();
+        CreateClient createClient = new CreateClient(memoryClientRepository);
 
         System.out.println("Please enter data:");
         System.out.print("ID: ");
@@ -25,7 +26,7 @@ public class CarrentalApplication {
         String email = sc.nextLine();
         System.out.print("Mobile: ");
         String mobile = sc.nextLine();
-        createClient.createClient(id, name,cpf, email, mobile);
+        createClient.execute(id, name, cpf, email, mobile);
 
         //Display test client created
         System.out.println(createClient.toString());

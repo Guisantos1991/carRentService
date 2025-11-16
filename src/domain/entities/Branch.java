@@ -34,4 +34,8 @@ public class Branch {
     public void setCity(String city) {
         this.city = city;
     }
+
+    public void updateAdress(String city){
+        this.city = city;
+    }
 }

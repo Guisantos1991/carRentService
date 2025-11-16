@@ -110,4 +110,24 @@ public class Vehicle {
         this.odometerReading = odometerReading;
         this.status = status;
     }
+
+    public void reserve() {
+        this.status = VehicleStatus.RESERVED;
+    }
+
+    public void release() {
+        this.status = VehicleStatus.AVAILABLE;
+    }
+
+    public void markAsRented() {
+        this.status = VehicleStatus.RENTED;
+    }
+
+    public void sendToMaintenance() {
+        this.status = VehicleStatus.IN_MAINTENANCE;
+    }
+
+    public void markAsUnavailable() {
+        this.status = VehicleStatus.UNAVAILABLE;
+    }
 }

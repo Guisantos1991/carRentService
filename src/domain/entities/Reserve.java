@@ -98,4 +98,14 @@ public class Reserve {
         this.estimatedTotal = estimatedTotal;
         this.status = status;
     }
+
+    public void confirm(){
+        this.status = ReserveStatus.CONFIRMED;
+    }
+
+    public void cancel(){
+        this.status = ReserveStatus.CANCELED;
+    }
+
+
 }
