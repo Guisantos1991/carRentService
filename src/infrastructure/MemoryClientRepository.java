@@ -48,4 +48,14 @@ public class MemoryClientRepository implements ClientRepository {
             c.upDateClient(name, cpf, email, phone);
         });
     }
+
+    @Override
+    public Client saveReturn(int id, String name, String cpf, String email, String phone, ClientStatus status) {
+        return null;
+    }
+
+    public List<Client> findAll() {
+        return clients;
+    }
+
 }

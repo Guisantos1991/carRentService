@@ -43,4 +43,9 @@ public class ImplClientService implements ClientRepository {
     public void updateById(int id, String name, String cpf, String email, String phone) {
 
     }
+
+    @Override
+    public Client saveReturn(int id, String name, String cpf, String email, String phone, ClientStatus status) {
+        return null;
+    }
 }

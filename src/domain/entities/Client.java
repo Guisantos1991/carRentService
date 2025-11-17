@@ -84,4 +84,15 @@ public class Client {
             System.out.println("Dados do cliente atualizados com sucesso.");
         }
     }
+
+    @Override
+    public String toString() {
+        return "Cliente: " +
+                "ID = " + id +
+                ", Nome = '" + name + '\'' +
+                ", CPF = '" + cpf + '\'' +
+                ", Email = '" + email + '\'' +
+                ", Telefone = '" + phone + '\'' +
+                ", Status = " + status;
+    }
 }
