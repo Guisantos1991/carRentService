@@ -5,9 +5,9 @@ import application.domain.enums.CustomerStatus;
 import java.util.Objects;
 
 public class Customer {
-    private Long id;
-    private String name;
-    private String documentNumber;
+    private final Long id;
+    private final String name;
+    private final String documentNumber;
     private String email;
     private String phoneNumber;
     private CustomerStatus status;
@@ -25,41 +25,30 @@ public class Customer {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getDocumentNumber() {
         return documentNumber;
     }
 
-    public void setDocumentNumber(String documentNumber) {
-        this.documentNumber = documentNumber;
-    }
+
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+
 
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
+
 
     public CustomerStatus getStatus() {
         return status;

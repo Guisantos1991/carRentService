@@ -17,15 +17,6 @@ public class CustomerRepository {
         return Optional.ofNullable(customers.get(id));
     }
 
-    public void deleteById(Long id) {
-        customers.remove(id);
-    }
-
-    public boolean existsById(Long id) {
-        return customers.containsKey(id);
-    }
-
-    // Novo método para listar todos
     public List<Customer> findAll() {
         return new ArrayList<>(customers.values());
     }

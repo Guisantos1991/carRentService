@@ -12,7 +12,7 @@ import java.util.Scanner;
 public class CustomerController {
 
     private final CustomerService customerService;
-    private CliMenuController cliMenuController;
+    private final CliMenuController cliMenuController;
     private final Scanner scanner;
 
     public CustomerController() {
