@@ -13,28 +13,28 @@ public class CliMenuController {
     public void showMainMenu() {
 
         Locale.setDefault(Locale.US);
+        CustomerController customerController = new CustomerController();
         Scanner sc = new Scanner(System.in);
 
         int option = 100;
 
 
         while (option < 0 || option > 5) {
-            System.out.println("Welcome to Car Rental System");
+            System.out.println("Bem-vindo ao sistema de locação de veículos!");
             System.out.println();
-            System.out.println("Select the menu to access:");
-            System.out.println("1. Client Management");
-            System.out.println("2. Vehicle Management");
-            System.out.println("3. Rent Management");
-            System.out.println("4. Reservation Management");
-            System.out.println("5. Exit");
-            System.out.print("Enter your choice: ");
+            System.out.println("Selecione abaixo qual função deseja realizar:");
+            System.out.println("1. Gerenciar Clientes");
+            System.out.println("2. Gerenciar Veículos");
+            System.out.println("3. Gerenciar Alugueis");
+            System.out.println("4. Reservas");
+            System.out.println("5. Sair");
+            System.out.print("Digite aqui sua seleção: ");
             option = sc.nextInt();
 
         }
         switch(option) {
             case 1:
-                ClientController clientController = new ClientController();
-                clientController.showClientMenu();
+                customerController.start();
                 break;
             case 2:
                 break;
