@@ -13,4 +13,5 @@ public interface CustomerService {
     Optional<Customer> findCustomerById(Long id);
     List<Customer> listAllCustomers();
     void displayCustomerInfo(Long id);
+    void blockCustomer();
 }

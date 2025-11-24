@@ -40,6 +40,14 @@ public class CustomerServiceImpl implements CustomerService {
         customerRepository.save(customer);
     }
 
+
+    public void blockCustomer() {
+                Customer customer = customerRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+        customer.block();
+        customerRepository.save(customer);
+    }
+
     @Override
     public Optional<Customer> findCustomerById(Long id) {
         return customerRepository.findById(id);

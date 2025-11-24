@@ -36,12 +36,15 @@ public class CustomerController {
                 case 4 -> updateCustomer();
                 case 5 -> activateCustomer();
                 case 6 -> deactivateCustomer();
-                case 7 -> cliMenuController.showMainMenu();
+                case 7 -> customerService.blockCustomer();
+                case 8 -> cliMenuController.showMainMenu();
                 case 0 -> System.out.println("Saindo do sistema...");
                 default -> System.out.println("Opção inválida!");
             }
         } while (option != 0);
     }
+
+
 
     private void displayMenu() {
         System.out.println("\n=== MENU DE CLIENTES ===");
