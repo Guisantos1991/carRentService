@@ -1,6 +1,8 @@
 package application.controllers;
 
 
+import services.VehicleServiceImpl;
+
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -14,6 +16,7 @@ public class CliMenuController {
 
         Locale.setDefault(Locale.US);
         CustomerController customerController = new CustomerController();
+        VehicleController vehicleController = new VehicleController();
         Scanner sc = new Scanner(System.in);
 
         int option = 100;
@@ -37,6 +40,7 @@ public class CliMenuController {
                 customerController.start();
                 break;
             case 2:
+                vehicleController.start();
                 break;
             case 3:
 

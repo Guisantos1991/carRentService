@@ -8,9 +8,8 @@ public class CustomerRepository {
 
     private final Map<Long, Customer> customers = new HashMap<>();
 
-    public Customer save(Customer customer) {
+    public void save(Customer customer) {
         customers.put(customer.getId(), customer);
-        return customer;
     }
 
     public Optional<Customer> findById(Long id) {
