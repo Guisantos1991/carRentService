@@ -77,9 +77,4 @@ public class Customer {
     public void block() {
         this.status = CustomerStatus.BLOCKED;
     }
-
-    public void updateContactInfo(String email, String phoneNumber) {
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-    }
 }

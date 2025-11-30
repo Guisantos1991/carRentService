@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Optional;
 
 public interface CustomerService {
-    Customer registerCustomer(Customer customer);
-    Customer updateCustomer(Customer customer);
-    void activateCustomer(Long id);
-    void deactivateCustomer(Long id);
+    void registerCustomer();
+    void updateCustomer();
+    void activateCustomer();
+    void deactivateCustomer();
     Optional<Customer> findCustomerById(Long id);
-    List<Customer> listAllCustomers();
-    void displayCustomerInfo(Long id);
+    void listAllCustomers();
+    void displayCustomerInfo();
     void blockCustomer();
 }
