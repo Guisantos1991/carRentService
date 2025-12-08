@@ -1,11 +1,8 @@
 package application.controllers;
 
 import infraestructures.repository.VehicleRepository;
-import services.CustomerService;
-import services.VehicleService;
 import services.VehicleServiceImpl;
 
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class VehicleController {
@@ -17,8 +14,7 @@ public class VehicleController {
 
 
     public VehicleController() {
-        VehicleRepository vehicleRepository = new VehicleRepository();
-        this.vehicleService = new VehicleServiceImpl(vehicleRepository);
+        this.vehicleService = new VehicleServiceImpl();
         this.customerController = new CustomerController();
         this.cliMenuController = new CliMenuController();
     }

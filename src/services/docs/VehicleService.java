@@ -1,4 +1,4 @@
-package services;
+package services.docs;
 
 public interface VehicleService {
     void registerVehicle();

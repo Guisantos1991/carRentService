@@ -3,26 +3,20 @@ package services;
 import application.domain.entities.Customer;
 import application.domain.enums.CustomerStatus;
 import infraestructures.repository.CustomerRepository;
-
+import services.docs.CustomerService;
 import java.util.List;
-import java.util.Optional;
-
 import static java.lang.Long.parseLong;
 
 public class CustomerServiceImpl implements CustomerService {
 
-    private final CustomerRepository customerRepository;
-
-    public CustomerServiceImpl(CustomerRepository customerRepository) {
-        this.customerRepository = customerRepository;
-    }
+    private final CustomerRepository customerRepository = new CustomerRepository();
 
     @Override
     public void registerCustomer() {
+
         System.out.println("\n=== CADASTRO DE CLIENTE ===");
         System.out.print("ID: ");
         Long id = Long.parseLong(System.console().readLine());
-
 
         System.out.print("Nome: ");
         String name = System.console().readLine();
@@ -45,7 +39,7 @@ public class CustomerServiceImpl implements CustomerService {
     public void updateCustomer() {
         System.out.print("Inform o ID do cliente que será atualizado: ");
         Long id = parseLong(System.console().readLine());
-        Customer customer = customerRepository.findById(id).orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+        Customer customer = customerRepository.findById(id);
         System.out.println("\n=== ATUALIZAÇÃO DE CLIENTE ===");
         System.out.println("Deixe em branco para manter o valor atual.");
         System.out.print("Nome (" + customer.getName() + "): ");
@@ -71,7 +65,7 @@ public class CustomerServiceImpl implements CustomerService {
     public void activateCustomer() {
         System.out.print("Informe o ID que será ativado: ");
         Long id = parseLong(System.console().readLine());
-        Customer customer = customerRepository.findById(id).orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+        Customer customer = customerRepository.findById(id);
         customer.activate();
         customerRepository.save(customer);
     }
@@ -79,27 +73,23 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public void deactivateCustomer() {
         Long id = parseLong(System.console().readLine());
-        Customer customer = customerRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+        Customer customer = customerRepository.findById(id);
         customer.deactivate();
         customerRepository.save(customer);
     }
 
-
+    @Override
     public void blockCustomer() {
         System.out.print("Digite o Id do cliente: ");
         Long id = parseLong(System.console().readLine());
-                Customer customer = customerRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+                Customer customer = customerRepository.findById(id);
         customer.block();
         customerRepository.save(customer);
     }
 
     @Override
-    public Optional<Customer> findCustomerById(Long id) {
-
+    public Customer findCustomerById(Long id) {
         return customerRepository.findById(id);
-
     }
 
     @Override
@@ -128,8 +118,7 @@ public class CustomerServiceImpl implements CustomerService {
 
         System.out.print("Digite o ID do cliente: ");
         Long id = parseLong(System.console().readLine());
-        Customer customer = findCustomerById(id)
-                .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+        Customer customer = findCustomerById(id);
 
         System.out.println("\n=== INFORMAÇÕES DO CLIENTE ===");
         System.out.println("ID: " + customer.getId());
@@ -140,5 +129,4 @@ public class CustomerServiceImpl implements CustomerService {
         System.out.println("Status: " + customer.getStatus());
         System.out.println("=============================");
     }
-
 }

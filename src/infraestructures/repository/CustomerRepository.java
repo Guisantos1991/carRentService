@@ -6,17 +6,17 @@ import java.util.*;
 
 public class CustomerRepository {
 
-    private final Map<Long, Customer> customers = new HashMap<>();
+    private final List<Customer> customers = new ArrayList<>();
 
     public void save(Customer customer) {
-        customers.put(customer.getId(), customer);
+        customers.add(customer);
     }
 
-    public Optional<Customer> findById(Long id) {
-        return Optional.ofNullable(customers.get(id));
+    public Customer findById(Long id) {
+        return customers.stream().filter(customer -> customer.getId().equals(id)).findFirst().orElseThrow(() -> new NoSuchElementException("Customer not found with ID: " + id));
     }
 
     public List<Customer> findAll() {
-        return new ArrayList<>(customers.values());
+        return customers.stream().toList();
     }
 }

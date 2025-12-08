@@ -10,9 +10,9 @@ import java.util.Map;
 public class VehicleRepository {
     private final Map<Long, Vehicle> vehicles = new HashMap<>();
 
-    public Vehicle save(Vehicle vehicle) {
+    public void save(Long id, Vehicle vehicle) {
         vehicles.put(vehicle.getId(), vehicle);
-        return vehicle;
+        
     }
 
     public Vehicle findById(long id) {

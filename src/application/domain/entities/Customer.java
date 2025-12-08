@@ -77,4 +77,8 @@ public class Customer {
     public void block() {
         this.status = CustomerStatus.BLOCKED;
     }
+
+    public Customer orElseThrow(Object clienteNaoEncontrado) {
+        return orElseThrow("Cliente não encontrado");
+    }
 }

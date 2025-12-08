@@ -6,4 +6,5 @@ public enum FuelType {
     DIESEL,
     ELECTRIC,
     HYBRID,
+    FLEX
 }

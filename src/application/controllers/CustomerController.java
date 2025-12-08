@@ -1,10 +1,7 @@
 package application.controllers;
 
-import infraestructures.repository.CustomerRepository;
-import services.CustomerService;
+import services.docs.CustomerService;
 import services.CustomerServiceImpl;
-
-
 import java.util.Scanner;
 
 public class CustomerController {
@@ -14,8 +11,7 @@ public class CustomerController {
     private final Scanner scanner;
 
     public CustomerController() {
-        CustomerRepository repository = new CustomerRepository();
-        this.customerService = new CustomerServiceImpl(repository);
+        this.customerService = new CustomerServiceImpl();
         this.cliMenuController = new CliMenuController();
         this.scanner = new Scanner(System.in);
     }
