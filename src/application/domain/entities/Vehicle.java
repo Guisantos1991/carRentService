@@ -90,4 +90,7 @@ public class Vehicle {
         this.currentKm += additionalKm;
     }
 
+    public void setVehicleStatus(VehicleStatus status) {
+        this.vehicleStatus = status;
+    }
 }

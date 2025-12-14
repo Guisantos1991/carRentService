@@ -1,13 +1,12 @@
 package services.docs;
 
 import application.domain.entities.Reservation;
-import dto.CreateReservationRequest;
 
 import java.math.BigDecimal;
 
 public interface ReservationService {
-    void createReservation(CreateReservationRequest request);
-    Reservation confirmReservation(Long reservationId);
-    Reservation cancelReservation(Long reservationId);
-    BigDecimal calculateEstimatedCost(Long reservationId, int rentalDays);
+    void createReservation();
+    Reservation confirmReservation(long reservationId);
+    Reservation cancelReservation(long reservationId);
+    BigDecimal calculateEstimatedCost(long reservationId, int rentalDays);
 }

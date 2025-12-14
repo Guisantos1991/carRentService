@@ -3,8 +3,10 @@ package application.domain.entities;
 import application.domain.enums.ReservationStatus;
 
 import java.math.BigDecimal;
+import java.util.Random;
 
 public class Reservation {
+
     private Long id;
     private Customer customer;
     private Vehicle vehicle;
@@ -16,7 +18,7 @@ public class Reservation {
     private ReservationStatus status;
 
     public Reservation(Long id, Customer customer, Vehicle vehicle, Branch pickupBranch, Branch returnBranch, String pickupDate, String returnDate, BigDecimal estimatedCost, ReservationStatus status) {
-        this.id = id;
+        this.id = generateId();
         this.customer = customer;
         this.vehicle = vehicle;
         this.pickupBranch = pickupBranch;
@@ -39,13 +41,19 @@ public class Reservation {
         this.status = ReservationStatus.COMPLETED;
     }
 
-    public BigDecimal getEstimatedCost(Double dailyRate, int rentalDays) {
-        BigDecimal estimatedCost = BigDecimal.valueOf(dailyRate * rentalDays);
-
-        return this.estimatedCost = estimatedCost;
+   public Long getId() {
+        return id;
     }
 
-    public Long getId() {
-        return id;
+    public void setId(Long id) {
+        if (id == null) {
+            this.id = generateId();
+        } else {
+            this.id = id;
+        }
+    }
+
+    public long generateId() {
+        return Math.abs(new Random().nextLong());
     }
 }
