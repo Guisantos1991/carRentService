@@ -54,7 +54,7 @@ public class VehicleServiceImpl implements VehicleService {
             dailyRate
         );
 
-        vehicleRepository.save(id, vehicle);
+        vehicleRepository.save(vehicle);
 
         System.out.println("✅ Veículo cadastrado com sucesso!");
     }
@@ -87,7 +87,7 @@ public class VehicleServiceImpl implements VehicleService {
             vehicle.getVehicleStatus(),
             vehicle.getDailyRate()
         );
-        vehicleRepository.save(id, vehicle);
+        vehicleRepository.save(vehicle);
         System.out.println("✅ Veículo atualizado com sucesso!");
     }
 

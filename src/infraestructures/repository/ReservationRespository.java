@@ -18,8 +18,9 @@ public class ReservationRespository {
         reservations.put(reservation.getId(), reservation);
     }
 
-    public void findById(Long reservationId) {
-        reservations.get(reservationId);
+    public Reservation findById(Long reservationId) {
+        ;
+        return reservations.get(reservationId);
     }
 
     public List<Reservation> findAll() {

@@ -17,6 +17,7 @@ public class CliMenuController {
         Locale.setDefault(Locale.US);
         CustomerController customerController = new CustomerController();
         VehicleController vehicleController = new VehicleController();
+        ReserveController reserveController = new ReserveController();
         Scanner sc = new Scanner(System.in);
 
         int option = 100;
@@ -46,7 +47,7 @@ public class CliMenuController {
 
                 break;
             case 4:
-
+                reserveController.start();
                 break;
             case 5:
                 System.out.println("Exiting the application. Goodbye!");

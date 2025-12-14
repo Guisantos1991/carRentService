@@ -3,6 +3,7 @@ package application.domain.entities;
 import application.domain.enums.ReservationStatus;
 
 import java.math.BigDecimal;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 
 public class Reservation {
@@ -14,10 +15,11 @@ public class Reservation {
     private Branch returnBranch;
     private String pickupDate;
     private String returnDate;
-    private BigDecimal estimatedCost;
+    private Double estimatedCost;
     private ReservationStatus status;
 
-    public Reservation(Long id, Customer customer, Vehicle vehicle, Branch pickupBranch, Branch returnBranch, String pickupDate, String returnDate, BigDecimal estimatedCost, ReservationStatus status) {
+    public Reservation(Customer customer, Vehicle vehicle, Branch pickupBranch, Branch returnBranch, String pickupDate, String returnDate, Double estimatedCost, ReservationStatus status) {
+
         this.id = generateId();
         this.customer = customer;
         this.vehicle = vehicle;
@@ -27,6 +29,21 @@ public class Reservation {
         this.returnDate = returnDate;
         this.estimatedCost = estimatedCost;
         this.status = status;
+    }
+
+    public Double getEstimatedCost() {
+        Double dailyRate = vehicle.getDailyRate();
+        int days = calculateDaysBetween(pickupDate, returnDate);
+        estimatedCost = dailyRate * days;
+        return estimatedCost;
+    }
+
+    private int calculateDaysBetween(String pickupDate, String returnDate) {
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        java.time.LocalDate startDate = java.time.LocalDate.parse(pickupDate, formatter);
+        java.time.LocalDate endDate = java.time.LocalDate.parse(returnDate, formatter);
+        return (int) java.time.temporal.ChronoUnit.DAYS.between(startDate, endDate);
     }
 
     public void confirm() {
@@ -56,4 +73,5 @@ public class Reservation {
     public long generateId() {
         return Math.abs(new Random().nextLong());
     }
+
 }
