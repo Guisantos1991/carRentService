@@ -7,11 +7,11 @@ public class ReserveController {
 
     Scanner sc = new Scanner(System.in);
     public static ReservationServiceImpl reservationService;
-    private CliMenuController cliMenuController;
+    private static CliMenuController cliMenuController;
 
     public ReserveController () {
         reservationService = new ReservationServiceImpl();
-        this.cliMenuController = new CliMenuController();
+        cliMenuController = new CliMenuController();
     }
     public void start() {
 
@@ -60,7 +60,7 @@ public class ReserveController {
                 reservationService.cancelReservation(cancelId);
                 break;
             case 3:
-                // Voltar ao menu anterior
+                cliMenuController.showMainMenu();
                 break;
             default:
                 System.out.println("Opção inválida!");

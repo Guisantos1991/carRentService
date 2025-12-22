@@ -48,4 +48,13 @@ public class Branch {
     public void updateAdress(String newAddress) {
         this.address = newAddress;
     }
+
+    public String toString() {
+        return "\n Filial: " +
+                "\n  ID: " + id +
+                "\n  Nome: " + name +
+                "\n  Código: " + code +
+                "\n  Endereço: " + address +
+                "\n ---------------------------";
+    }
 }

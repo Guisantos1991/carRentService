@@ -1,8 +1,10 @@
 package services;
 
+import application.domain.entities.Branch;
 import application.domain.entities.Customer;
 import application.domain.entities.Vehicle;
 import application.domain.enums.*;
+import infraestructures.repository.BranchRepository;
 import infraestructures.repository.CustomerRepository;
 import infraestructures.repository.VehicleRepository;
 import services.docs.VehicleService;
@@ -10,6 +12,7 @@ import services.docs.VehicleService;
 public class VehicleServiceImpl implements VehicleService {
 
     private final VehicleRepository vehicleRepository = new VehicleRepository();
+    BranchRepository branchRepository = new BranchRepository();
 
     @Override
     public void registerVehicle() {
@@ -32,7 +35,7 @@ public class VehicleServiceImpl implements VehicleService {
         System.out.print("Tipo de Combustível (GASOLINE/ FLEX / ETHANOL/ DIESEL/ ELECTRIC/ HYBRID): ");
         FuelType fuelType = FuelType.valueOf(System.console().readLine().toUpperCase());
 
-        System.out.print("Tipo de Transmissão (MANUAL/ AUTOMÁTICA): ");
+        System.out.print("Tipo de Transmissão (MANUAL/ AUTOMATIC): ");
         TransmissionType transmissionType = TransmissionType.valueOf(System.console().readLine().toUpperCase());
 
         System.out.print("Categoria (ECONOMY/ COMPACT/ SUV/ LUXURY/ VAN): ");
@@ -41,17 +44,23 @@ public class VehicleServiceImpl implements VehicleService {
         System.out.print("Valor Diário: ");
         Double dailyRate = Double.parseDouble(System.console().readLine());
 
+        System.out.println("Informe em qual filial o veículo será cadastrado.");
+        System.out.print("ID da Filial: ");
+        long branchId = Long.parseLong(System.console().readLine());
+        Branch branch = branchRepository.findById(branchId);
+
         Vehicle vehicle = new Vehicle(
-            id,
-            plateNumber,
-            model,
-            year,
-            currentKm,
-            fuelType,
-            transmissionType,
-            category,
-            VehicleStatus.AVAILABLE,
-            dailyRate
+                id,
+                plateNumber,
+                model,
+                year,
+                currentKm,
+                fuelType,
+                transmissionType,
+                category,
+                VehicleStatus.AVAILABLE,
+                dailyRate,
+                branch
         );
 
         vehicleRepository.save(vehicle);
@@ -63,7 +72,7 @@ public class VehicleServiceImpl implements VehicleService {
     public void updateVehicle() {
         System.out.println("\n=== ATUALIZAÇÃO DE VEÍCULO ===");
         System.out.print("ID do Veículo a ser atualizado: ");
-        Long id = Long.parseLong(System.console().readLine());
+        long id = Long.parseLong(System.console().readLine());
         Vehicle vehicle = vehicleRepository.findById(id);
         if (vehicle == null) {
             System.out.println("❌ Veículo não encontrado!");
@@ -76,16 +85,17 @@ public class VehicleServiceImpl implements VehicleService {
         System.out.print("Nova Kilometragem (atual: " + vehicle.getCurrentKm() + "): ");
         Integer currentKm = Integer.parseInt(System.console().readLine());
         vehicle = new Vehicle(
-            vehicle.getId(),
-            vehicle.getPlateNumber(),
-            model,
-            year,
-            currentKm,
-            vehicle.getFuelType(),
-            vehicle.getTransmissionType(),
-            vehicle.getCategory(),
-            vehicle.getVehicleStatus(),
-            vehicle.getDailyRate()
+                vehicle.getId(),
+                vehicle.getPlateNumber(),
+                model,
+                year,
+                currentKm,
+                vehicle.getFuelType(),
+                vehicle.getTransmissionType(),
+                vehicle.getCategory(),
+                vehicle.getVehicleStatus(),
+                vehicle.getDailyRate()
+                , vehicle.getBranch()
         );
         vehicleRepository.save(vehicle);
         System.out.println("✅ Veículo atualizado com sucesso!");

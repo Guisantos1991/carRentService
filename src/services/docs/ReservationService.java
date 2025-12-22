@@ -8,5 +8,5 @@ public interface ReservationService {
     void createReservation();
     String confirmReservation(long reservationId);
     void cancelReservation(long reservationId);
-    Double calculateEstimatedCost();
+    double calculateEstimatedCost();
 }

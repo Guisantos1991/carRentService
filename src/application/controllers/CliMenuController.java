@@ -1,6 +1,7 @@
 package application.controllers;
 
 
+import services.BranchServicesImpl;
 import services.VehicleServiceImpl;
 
 import java.util.Locale;
@@ -18,6 +19,7 @@ public class CliMenuController {
         CustomerController customerController = new CustomerController();
         VehicleController vehicleController = new VehicleController();
         ReserveController reserveController = new ReserveController();
+        BranchController branchController = new BranchController();
         Scanner sc = new Scanner(System.in);
 
         int option = 100;
@@ -29,9 +31,10 @@ public class CliMenuController {
             System.out.println("Selecione abaixo qual função deseja realizar:");
             System.out.println("1. Gerenciar Clientes");
             System.out.println("2. Gerenciar Veículos");
-            System.out.println("3. Gerenciar Alugueis");
-            System.out.println("4. Reservas");
-            System.out.println("5. Sair");
+            System.out.println("3. Gerenciar Pontos de Atendimento");
+            System.out.println("4. Gerenciar Alugueis");
+            System.out.println("5. Reservas");
+            System.out.println("6. Sair");
             System.out.print("Digite aqui sua seleção: ");
             option = sc.nextInt();
 
@@ -44,12 +47,12 @@ public class CliMenuController {
                 vehicleController.start();
                 break;
             case 3:
-
-                break;
-            case 4:
-                reserveController.start();
+                branchController.start();
                 break;
             case 5:
+                reserveController.start();
+                break;
+            case 6:
                 System.out.println("Exiting the application. Goodbye!");
                 break;
             default:

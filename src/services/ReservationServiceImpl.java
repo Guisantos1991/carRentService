@@ -23,6 +23,7 @@ public class ReservationServiceImpl implements ReservationService {
         this.vehicleRepository = vehicleRepository;
         this.customerRepository = customerRepository;
         this.branchRepository = branchRepository;
+        this.reservationRespository = reservationRespository;
     }
 
     @Override
@@ -35,7 +36,7 @@ public class ReservationServiceImpl implements ReservationService {
             System.out.println("Cliente não encontrado.");
         }
         System.out.print("ID do Veiculo: ");
-        Long vehicleId = parseLong(System.console().readLine());
+        long vehicleId = parseLong(System.console().readLine());
         Vehicle vehicle = vehicleRepository.findById(vehicleId);
         if (vehicle == null) {
             System.out.println("Veiculo não encontrado.");
@@ -98,7 +99,7 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public Double calculateEstimatedCost() {
+    public double calculateEstimatedCost() {
 
         System.out.println("===== Cálculo de Custo Estimado =====");
         System.out.print("Número de dias de aluguel: ");

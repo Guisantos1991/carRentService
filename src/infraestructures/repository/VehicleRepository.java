@@ -5,13 +5,11 @@ import application.domain.entities.Vehicle;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class VehicleRepository {
     private final List<Vehicle> vehicles = new ArrayList<>();
 
     public void save(Vehicle vehicle) {
         vehicles.add(vehicle);
-        
     }
 
     public Vehicle findByModel(String model) {

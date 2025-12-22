@@ -16,8 +16,9 @@ public class Vehicle {
     private VehicleCategory category;
     private VehicleStatus vehicleStatus;
     private Double dailyRate;
+    private Branch branch;
 
-    public Vehicle(Long id, String plateNumber, String model, Integer year, Integer currentKm, FuelType fuelType, TransmissionType transmissionType, VehicleCategory category, VehicleStatus vehicleStatus, Double dailyRate) {
+    public Vehicle(Long id, String plateNumber, String model, Integer year, Integer currentKm, FuelType fuelType, TransmissionType transmissionType, VehicleCategory category, VehicleStatus vehicleStatus, Double dailyRate, Branch branch) {
         this.id = id;
         this.plateNumber = plateNumber;
         this.model = model;
@@ -28,6 +29,7 @@ public class Vehicle {
         this.category = category;
         this.vehicleStatus = vehicleStatus;
         this.dailyRate = dailyRate;
+        this.branch = branch;
     }
 
     public Long getId() {
@@ -93,4 +95,8 @@ public class Vehicle {
     public void setVehicleStatus(VehicleStatus status) {
         this.vehicleStatus = status;
     }
+
+    public Branch getBranch() { return branch; }
+
+    public void setBranch(Branch branch) { this.branch = branch; }
 }
